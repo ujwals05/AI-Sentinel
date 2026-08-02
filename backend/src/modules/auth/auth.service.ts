@@ -1,11 +1,11 @@
 import { findUserByEmail, findUserById, createUser } from "./auth.repository.js";
 import { hashedPassword, comparePassword } from "../../utils/hash.js";
 import { signAccessToken, signRefreshToken, verifyRefreshToken } from "../../utils/jwt.js";
+import { ApiError } from "../../utils/apiError.js";
 
 import type {
     RegisterInput,
     LoginInput,
-    AuthResponse,
 } from "./auth.types.js";
 
 
@@ -14,9 +14,10 @@ export const registerUser = async (input: RegisterInput) => {
 
     const existingUser = await findUserByEmail(email);
     if (existingUser) {
-        throw new Error(
-            "User with this email already exists"
-        );
+        // throw new Error(
+        //     "User with this email already exists"
+        // );
+        throw new ApiError(409, "User with this email already exists");
     }
 
     const passwordHash = await hashedPassword(password);
@@ -39,8 +40,11 @@ export const loginUser = async (input: LoginInput) => {
     }
 
     const isPasswordValid = await comparePassword(password, user.passwordHash);
+    // if (!isPasswordValid) {
+    //     throw new Error("Invalid email or password");
+    // }
     if (!isPasswordValid) {
-        throw new Error("Invalid email or password");
+        throw new ApiError(401, "Invalid email or password");
     }
 
     const payload = {
@@ -73,8 +77,11 @@ export const refreshUserAccessToken = async (refreshToken: string) => {
 
     const user = await findUserById(decoded.userId);
 
+    // if (!user) {
+    //     throw new Error("User no longer exists");
+    // }
     if (!user) {
-        throw new Error("User no longer exists");
+        throw new ApiError(404, "User no longer exists");
     }
 
     const payload = {
