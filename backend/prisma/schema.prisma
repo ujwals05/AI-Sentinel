@@ -22,6 +22,7 @@ enum UserRole {
 enum ApplicationType {
   CHATBOT
   CODE_ASSISTANT
+  AI_AGENT
   API
   OTHER
 }
@@ -35,6 +36,39 @@ enum ApplicationEnvironment {
 enum ApplicationStatus {
   ACTIVE
   INACTIVE
+}
+
+// Conversation
+enum ConversationStatus {
+  ACTIVE
+  COMPLETED
+  ARCHIVED
+}
+
+// Message
+enum MessageRole {
+  USER
+  ASSISTANT
+  SYSTEM
+  TOOL
+}
+
+// Event
+enum EventType {
+  LLM_REQUEST
+  LLM_RESPONSE
+
+  // Future event types
+  TOOL_CALL
+  TOOL_RESPONSE
+  AGENT_ACTION
+
+  EVALUATION_STARTED
+  EVALUATION_COMPLETED
+
+  POLICY_VIOLATION
+  SAFETY_VIOLATION
+  HIGH_RISK_DETECTED
 }
 
 //USER 
@@ -74,7 +108,9 @@ model Application {
   // Relationships
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  apiKeys ApiKey[]
+  apiKeys       ApiKey[]
+  conversations Conversation[]
+  events        Event[]
 
   @@index([userId])
   @@map("applications")
@@ -103,4 +139,148 @@ model ApiKey {
   @@index([applicationId])
   @@index([keyPrefix])
   @@map("api_keys")
+}
+
+// CONVERSATION
+
+model Conversation {
+  id String @id @default(uuid()) @db.Uuid
+
+  applicationId String @db.Uuid
+
+  // ID provided by the external AI application
+  externalId String
+
+  title String?
+
+  status ConversationStatus @default(ACTIVE)
+
+  // Flexible conversation-level metadata
+  metadata Json?
+
+  startedAt DateTime @default(now())
+
+  lastMessageAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // RELATIONSHIPS
+  application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  messages Message[]
+
+  events Event[]
+
+  // CONSTRAINTS
+
+  // INDEXES
+
+  // Same external conversation cannot exist twice
+  // within the same application.
+  //
+  // Application A + chat_123  -> Allowed
+  // Application B + chat_123  -> Allowed
+  // Application A + chat_123  -> Duplicate
+  //
+  @@unique([applicationId, externalId])
+  @@index([applicationId])
+  @@index([status])
+  @@index([lastMessageAt])
+  @@map("conversations")
+}
+
+// MESSAGE
+
+model Message {
+  id String @id @default(uuid()) @db.Uuid
+
+  conversationId String @db.Uuid
+
+  // Message sender/type
+  role MessageRole
+
+  // Actual message content
+  content String
+
+  // Deterministic ordering inside conversation
+  sequence Int
+
+  // Flexible message-level metadata
+  metadata Json?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // RELATIONSHIPS
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  // CONSTRAINTS
+
+  // INDEXES
+
+  // Prevent two messages from having
+  // the same sequence number in one conversation.
+  @@unique([conversationId, sequence])
+  @@index([conversationId])
+  @@index([conversationId, role])
+  @@index([createdAt])
+  @@map("messages")
+}
+
+// EVENT
+
+model Event {
+  id String @id @default(uuid()) @db.Uuid
+
+  // Every event belongs directly to an application
+  applicationId String @db.Uuid
+
+  // Optional because some application events
+  // may not belong to a specific conversation.
+  conversationId String? @db.Uuid
+
+  // ID provided by the external AI application.
+  //
+  // Used for idempotency / duplicate detection.
+  externalEventId String
+
+  type EventType
+
+  // Complete event payload
+  payload Json
+
+  // Additional flexible metadata
+  metadata Json?
+
+  // When event actually occurred in external system
+  occurredAt DateTime
+
+  // When event was received/stored by AI Sentinel
+  createdAt DateTime @default(now())
+
+  // RELATIONSHIPS
+
+  application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  conversation Conversation? @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  // CONSTRAINTS
+
+  // INDEXES
+
+  // Prevent duplicate external events
+  // inside the same application.
+  //
+  // Application A + event_123 -> Allowed
+  // Application B + event_123 -> Allowed
+  // Application A + event_123 -> Duplicate
+  //
+  @@unique([applicationId, externalEventId])
+  @@index([applicationId])
+  @@index([conversationId])
+  @@index([applicationId, type])
+  @@index([occurredAt])
+  @@map("events")
 }
