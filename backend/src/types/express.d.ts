@@ -1,4 +1,5 @@
 import type { UserRole } from "../../generated/prisma/enums.js";
+import { ApiKey } from "../generated/prisma/client.ts";
 
 declare global {
     namespace Express {
@@ -9,6 +10,8 @@ declare global {
                 email: string;
                 role: UserRole;
             };
+
+            apiKey?: ApiKey;
         }
     }
 }
