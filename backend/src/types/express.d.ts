@@ -12,6 +12,12 @@ declare global {
             };
 
             apiKey?: ApiKey;
+
+            application?: {
+                id: string;
+                name: string;
+                status: ApplicationStatus;
+            };
         }
     }
 }
