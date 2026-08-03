@@ -51,3 +51,14 @@ export const createEvent = async (data: CreateEventInput, db: DatabaseClient = p
         },
     });
 };
+
+export const findEventById = async (
+    eventId: string,
+    db: DatabaseClient = prisma
+) => {
+    return db.event.findUnique({
+        where: {
+            id: eventId,
+        },
+    });
+};

@@ -83,3 +83,22 @@ export const updateLastMessageAt = async (
         },
     });
 };
+
+export const findConversationById = async (
+    conversationId: string,
+    db: Prisma.TransactionClient | typeof prisma = prisma
+) => {
+    return db.conversation.findUnique({
+        where: {
+            id: conversationId,
+        },
+
+        include: {
+            messages: {
+                orderBy: {
+                    sequence: "asc",
+                },
+            },
+        },
+    });
+};
