@@ -24,10 +24,10 @@ export const createApplicationSchema = z.object({
         )
         .optional(),
 
-    type: z.enum(ApplicationType),
+    type: z.nativeEnum(ApplicationType),
 
     environment: z
-        .enum(ApplicationEnvironment)
+        .nativeEnum(ApplicationEnvironment)
         .default(ApplicationEnvironment.DEVELOPMENT),
 })
 
@@ -55,11 +55,11 @@ export const updateApplicationSchema = z.object({
             .optional(),
 
         type: z
-            .enum(ApplicationType)
+            .nativeEnum(ApplicationType)
             .optional(),
 
         environment: z
-            .enum(ApplicationEnvironment)
+            .nativeEnum(ApplicationEnvironment)
             .optional(),
     })
     .refine(

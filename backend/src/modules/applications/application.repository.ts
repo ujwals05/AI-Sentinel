@@ -28,6 +28,16 @@ export const findApplicationsByUserId = async (userId: string) => {
         orderBy: {
             createdAt: "desc",
         },
+        include: {
+            _count: {
+                select: {
+                    conversations: true,
+                    evaluations: true,
+                    events: true,
+                    apiKeys: true,
+                },
+            },
+        },
     });
 };
 
@@ -37,6 +47,16 @@ export const findApplicationById = async (applicationId: string, userId: string)
             id: applicationId,
             userId,
             status: ApplicationStatus.ACTIVE,
+        },
+        include: {
+            _count: {
+                select: {
+                    conversations: true,
+                    evaluations: true,
+                    events: true,
+                    apiKeys: true,
+                },
+            },
         },
     });
 };

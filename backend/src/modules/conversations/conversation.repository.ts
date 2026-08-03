@@ -43,6 +43,71 @@ export const createConversation = async (
     });
 };
 
+export const findConversationsByApplicationId = async (
+    applicationId: string,
+    options: {
+        skip: number;
+        take: number;
+        status?: string;
+        search?: string;
+    }
+) => {
+    const where = {
+        applicationId,
+
+        ...(options.status
+            ? {
+                status: options.status as any,
+            }
+            : {}),
+
+        ...(options.search
+            ? {
+                OR: [
+                    {
+                        title: {
+                            contains: options.search,
+                            mode: "insensitive" as const,
+                        },
+                    },
+                    {
+                        externalId: {
+                            contains: options.search,
+                            mode: "insensitive" as const,
+                        },
+                    },
+                ],
+            }
+            : {}),
+    };
+
+    const [conversations, total] = await Promise.all([
+        prisma.conversation.findMany({
+            where,
+            skip: options.skip,
+            take: options.take,
+            orderBy: {
+                lastMessageAt: "desc",
+            },
+            include: {
+                _count: {
+                    select: {
+                        messages: true,
+                    },
+                },
+            },
+        }),
+
+        prisma.conversation.count({
+            where,
+        }),
+    ]);
+
+    return {
+        conversations,
+        total,
+    };
+};
 
 export const updateConversation = async (
     conversationId: string,
