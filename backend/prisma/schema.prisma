@@ -71,6 +71,40 @@ enum EventType {
   HIGH_RISK_DETECTED
 }
 
+//EVALUATION
+enum EvaluationStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+}
+
+enum EvaluationDecision {
+  PASS
+  REVIEW
+  REJECT
+}
+
+enum RiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum JudgeType {
+  QUALITY
+  SAFETY
+  TRUST
+}
+
+enum JudgeExecutionStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+}
+
 //USER 
 model User {
   id           String   @id @default(uuid()) @db.Uuid
@@ -111,6 +145,7 @@ model Application {
   apiKeys       ApiKey[]
   conversations Conversation[]
   events        Event[]
+  evaluations   Evaluation[]
 
   @@index([userId])
   @@map("applications")
@@ -175,6 +210,7 @@ model Conversation {
   // CONSTRAINTS
 
   // INDEXES
+  evaluations Evaluation[]
 
   // Same external conversation cannot exist twice
   // within the same application.
@@ -269,6 +305,7 @@ model Event {
   // CONSTRAINTS
 
   // INDEXES
+  evaluations Evaluation[]
 
   // Prevent duplicate external events
   // inside the same application.
@@ -283,4 +320,70 @@ model Event {
   @@index([applicationId, type])
   @@index([occurredAt])
   @@map("events")
+}
+
+//Evaluation
+
+model Evaluation {
+  id String @id @default(uuid()) @db.Uuid
+
+  applicationId  String  @db.Uuid
+  conversationId String  @db.Uuid
+  eventId        String? @db.Uuid
+
+  status EvaluationStatus @default(PENDING)
+
+  overallScore Float?
+  riskLevel    RiskLevel?
+  decision     EvaluationDecision?
+  summary      String?
+
+  createdAt   DateTime  @default(now())
+  startedAt   DateTime?
+  completedAt DateTime?
+
+  application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  event Event? @relation(fields: [eventId], references: [id], onDelete: SetNull)
+
+  judgeExecutions JudgeExecution[]
+
+  @@index([applicationId])
+  @@index([conversationId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("evaluations")
+}
+
+model JudgeExecution {
+  id String @id @default(uuid()) @db.Uuid
+
+  evaluationId String @db.Uuid
+
+  judgeType JudgeType
+  status    JudgeExecutionStatus @default(PENDING)
+
+  score     Float?
+  riskLevel RiskLevel?
+
+  result    Json?
+  reasoning String?
+
+  model    String?
+  provider String?
+
+  latencyMs Int?
+
+  createdAt   DateTime  @default(now())
+  startedAt   DateTime?
+  completedAt DateTime?
+
+  evaluation Evaluation @relation(fields: [evaluationId], references: [id], onDelete: Cascade)
+
+  @@index([evaluationId])
+  @@index([judgeType])
+  @@index([status])
+  @@map("judge_executions")
 }
