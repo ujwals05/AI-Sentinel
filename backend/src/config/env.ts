@@ -23,6 +23,10 @@ const envSchema = z.object({
   JWT_REFRESH_EXPIRES: z.custom<StringValue>(
     (val) => typeof val === "string"
   ),
+  CORS_ORIGIN: z
+    .string()
+    .min(1, "CORS_ORIGIN is required"),
+
   GEMINI_API_KEY: z.string().min(1, "GEMINI_API_KEY is required"),
   GEMINI_MODEL: z.string().default("gemini-2.5-flash"),
   GEMINI_TEMPERATURE: z.coerce.number().default(0.2),

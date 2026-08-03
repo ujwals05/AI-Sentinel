@@ -2,11 +2,11 @@ import express, { urlencoded } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { errorMiddleware } from "./middleware/error.middleware.js";
-
+import { env } from "./config/env.js";
 const app = express();
 
 app.use(cors({
-    origin: ["http://localhost:5173","http://localhost:5176"],
+    origin: env.CORS_ORIGIN,
     credentials: true,
 }));
 
