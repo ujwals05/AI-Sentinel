@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import type { Evaluation, RiskLevel, EvaluationDecision, EvaluationStatus } from '../types';
+import type { RiskLevel, EvaluationDecision, EvaluationStatus } from '../types';
 import { useEvaluations } from '../hooks/useEvaluations';
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
