@@ -2,19 +2,21 @@
 
 **Sentinel** integrates with **AI-powered applications** to continuously **monitor** and evaluate their outputs using a multi-judge LLM architecture. It assesses quality, correctness, safety, groundedness, and policy compliance, explains failures with evidence, assigns risk levels. Developers can use a **playground** for manual evaluation, an **API** for production integration, and an observability dashboard to monitor AI quality and detect regressions over time.
 
+LIVE
+
+# Problem
+Companies are increasingly deploying **AI applications**, but they don't have a reliable way to continuously determine whether AI outputs are correct, relevant, safe, grounded, policy-compliant, or trustworthy.
+
 ---
 
 ## Features
 
 User Authentication (JWT with HTTP-only cookies)  
-Profile Picture Upload using **Cloudinary**  
-Real-time Messaging Experience  
-Online/Offline Presence Indicators
-Image Sharing in Chats  
-Responsive Modern UI (DaisyUI + Tailwind)  
-Toast Notifications for User Feedback  
-State Management using **Zustand**  
-Dynamic Theme Support (Light/Dark mode)
+API Integration with other ai powered system  
+Multiple LLM for decision making
+Implemepted Transaction to ensure security  
+Multi tentent System  
+Monitoring AI powered application  
 
 ---
 
@@ -22,23 +24,19 @@ Dynamic Theme Support (Light/Dark mode)
 
 ### **Frontend**
 
-- React 19 (Vite)
-- Tailwind CSS + DaisyUI
-- Framer Motion (Animations)
+- React (Vite)
+- Tailwind CSS
 - React Hot Toast (Notifications)
 - Zustand (State Management)
-- Lottie React (Animated Loaders)
-- React Router DOM
+- tanstack
 - Axios for API Requests
 - Lucide React (Icon Library)
 
 ### **Backend**
 
 - Node.js + Express
-- MongoDB + Mongoose
+- Prisma+PostgresSQL
 - JSON Web Tokens (JWT)
-- Cloudinary (Media Storage)
-- Multer (File Upload Handling)
 - Bcrypt (Password Hashing)
 - CORS + Cookie Parser
 - Dotenv for Environment Variables
@@ -79,14 +77,120 @@ Dynamic Theme Support (Light/Dark mode)
   │   ├──.gitignore
   └── README.md
   ```
+  
+  ## Multi-Judge Architecture
+
+Sentinel uses multiple specialized LLM judges instead of relying on a single evaluation prompt.
+
+Quality Judge
+
+Evaluates the overall quality of an AI response.
+
+It focuses on factors such as:
+
+Relevance
+Correctness
+Completeness
+Instruction adherence
+Response quality
+Safety Judge
+
+Evaluates whether an AI response presents potential safety or policy concerns.
+
+It can identify:
+
+Unsafe content
+Policy violations
+Harmful responses
+High-risk behavior
+Trust Judge
+
+Evaluates the trustworthiness of the AI response.
+
+It focuses on factors such as:
+
+Hallucination indicators
+Groundedness
+Reliability
+Factual consistency
+Confidence in the response
+Evaluation Aggregation
+
+After the individual judges complete their evaluation, Sentinel aggregates the results.
+
+The evaluation system produces:
+
+Overall Score
+Risk Level
+Decision
+Summary
+Quality Evaluation
+Safety Evaluation
+Trust Evaluation
+
+This provides a single high-level view of the AI response while preserving the individual judge results for deeper analysis.
+
+
+
+  Multi-Judge Architecture
+
+Sentinel uses multiple specialized LLM judges instead of relying on a single evaluation prompt.
+
+Quality Judge
+
+Evaluates the overall quality of an AI response.
+
+It focuses on factors such as:
+
+Relevance
+Correctness
+Completeness
+Instruction adherence
+Response quality
+Safety Judge
+
+Evaluates whether an AI response presents potential safety or policy concerns.
+
+It can identify:
+
+Unsafe content
+Policy violations
+Harmful responses
+High-risk behavior
+Trust Judge
+
+Evaluates the trustworthiness of the AI response.
+
+It focuses on factors such as:
+
+Hallucination indicators
+Groundedness
+Reliability
+Factual consistency
+Confidence in the response
+Evaluation Aggregation
+
+After the individual judges complete their evaluation, Sentinel aggregates the results.
+
+The evaluation system produces:
+
+Overall Score
+Risk Level
+Decision
+Summary
+Quality Evaluation
+Safety Evaluation
+Trust Evaluation
+
+This provides a single high-level view of the AI response while preserving the individual judge results for deeper analysis.
 
   ## Installation & Setup -Locally
 
   ### Clone the repository
 
   ```bash
-  git clone https://github.com/ujwals05/flux-v1.git
-  cd flux-v1
+  git clone https://github.com/ujwals05/AI-Sentinel.git
+  cd AI-Sentinel
   ```
 
   ### Set-up Backend
@@ -100,7 +204,7 @@ Dynamic Theme Support (Light/Dark mode)
 
   ```
   PORT = 8001
-  MONGO_DB = mongodb_url
+  POSTGRES = preisma 
   CORS_ORIGIN = http://localhost:5173
 
   ACCESS_TOKEN_SECRET = your_access_token
@@ -108,9 +212,6 @@ Dynamic Theme Support (Light/Dark mode)
 
   REFRESH_TOKEN_SECRET = your_refresh_token
   REFRESH_TOKEN_EXPIRY = 10d
-  CLOUDINARY_NAME = name
-  CLOUDINARY_API = API_KEY
-  CLOUDINARY_SECRET = SECRET_KEY
 
   NODE_ENV = development
   ```
@@ -129,37 +230,4 @@ Dynamic Theme Support (Light/Dark mode)
   npm run dev
   ```
 
-  ## Pre-view:
-
-      <h2 >Application Previews</h2>
-
-  <em>Sign Up page</em>
-    <p align="center">
-      <img src="./preview/signup.jpg" alt="Home Page" width="800" align="center" />
-      </p>
-  <em>About Us</em>
-  <p align="center">
-    <img src="./preview/aboutus.jpg" alt="Login Page" width="800"/>
-  </p>
-  <em>Profile Page</em>
-  <p align="center">
-    <img src="./preview/profile.jpg" alt="Dashboard" width="800"/>
-  </p>
-  <em>Home Page</em>
-  <p align="center">
-    <img src="./preview/messages.jpg" alt="Chat Page" width="800"/>
-  </p>
-  <em>Settings</em>
-  <p align="center">
-    <img src="./preview/settings.jpg" alt="Profile Page" width="800"/>
-  </p>
-
-## Upcoming Features (Flux V2)
-
-- Google / GitHub OAuth Login
-- End-to-End Message Encryption
-- Message Privacy & Security Enhancements
-- File & Video Sharing
-- AI-Powered Smart Replies
-- Group Chats
-- Community
+https://github.com/ujwals05/AI-Sentinel.git
