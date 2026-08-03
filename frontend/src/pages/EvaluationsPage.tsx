@@ -80,8 +80,8 @@ export default function EvaluationsPage() {
     pass: evaluations.filter(e => e.decision === 'PASS').length,
     review: evaluations.filter(e => e.decision === 'REVIEW').length,
     reject: evaluations.filter(e => e.decision === 'REJECT').length,
-    avgScore: validScores.length > 0 
-      ? Math.round(validScores.reduce((s, e) => s + (e.overallScore ?? 0), 0) / validScores.length) 
+    avgScore: validScores.length > 0
+      ? Math.round(validScores.reduce((s, e) => s + (e.overallScore ?? 0), 0) / validScores.length)
       : 0,
   };
 
@@ -176,29 +176,30 @@ export default function EvaluationsPage() {
                 {filtered.map(ev => {
                   const appName = ev.application?.name || 'Unknown Application';
                   const convId = ev.conversation?.externalId || 'Unknown Conversation';
-                  
+
                   return (
-                  <tr
-                    key={ev.id}
-                    onClick={() => navigate(`/evaluations/${ev.id}`)}
-                    className="hover:bg-surface-container-lowest transition-colors cursor-pointer group"
-                  >
-                    <td className="px-4 py-3 font-mono text-xs font-bold text-primary group-hover:underline">
-                      {ev.id.toUpperCase().slice(0, 8)}
-                    </td>
-                    <td className="px-4 py-3 font-geist text-sm">{appName}</td>
-                    <td className="px-4 py-3 font-mono text-xs text-on-surface-variant">{convId}</td>
-                    <td className="px-4 py-3"><StatusBadge status={ev.status} /></td>
-                    <td className="px-4 py-3">
-                      {ev.overallScore !== undefined && ev.overallScore !== null ? <ScoreBar score={ev.overallScore} /> : <span className="text-on-surface-variant">—</span>}
-                    </td>
-                    <td className="px-4 py-3">{ev.riskLevel ? <RiskBadge risk={ev.riskLevel} /> : '—'}</td>
-                    <td className="px-4 py-3">{ev.decision ? <DecisionBadge decision={ev.decision} /> : '—'}</td>
-                    <td className="px-4 py-3 font-mono text-[11px] text-on-surface-variant">
-                      {new Date(ev.createdAt).toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
-                    </td>
-                  </tr>
-                )})}
+                    <tr
+                      key={ev.id}
+                      onClick={() => navigate(`/evaluations/${ev.id}`)}
+                      className="hover:bg-surface-container-lowest transition-colors cursor-pointer group"
+                    >
+                      <td className="px-4 py-3 font-mono text-xs font-bold text-primary group-hover:underline">
+                        {ev.id.toUpperCase().slice(0, 8)}
+                      </td>
+                      <td className="px-4 py-3 font-geist text-sm">{appName}</td>
+                      <td className="px-4 py-3 font-mono text-xs text-on-surface-variant">{convId}</td>
+                      <td className="px-4 py-3"><StatusBadge status={ev.status} /></td>
+                      <td className="px-4 py-3">
+                        {ev.overallScore !== undefined && ev.overallScore !== null ? <ScoreBar score={ev.overallScore} /> : <span className="text-on-surface-variant">—</span>}
+                      </td>
+                      <td className="px-4 py-3">{ev.riskLevel ? <RiskBadge risk={ev.riskLevel} /> : '—'}</td>
+                      <td className="px-4 py-3">{ev.decision ? <DecisionBadge decision={ev.decision} /> : '—'}</td>
+                      <td className="px-4 py-3 font-mono text-[11px] text-on-surface-variant">
+                        {new Date(ev.createdAt).toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                      </td>
+                    </tr>
+                  )
+                })}
               </tbody>
             </table>
           </div>
