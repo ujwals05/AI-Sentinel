@@ -1,24 +1,31 @@
 # AI Sentinel — Multi-tenant Quality Observability Platform
 
-[AISentinel](https://sentinel-eight-tau.vercel.app)
+[AISentinel](https://sentinel-eight-tau.vercel.app) 
+<br>
 **AI Sentinel** integrates with **AI-powered applications** to continuously **monitor** and evaluate their outputs using a multi-judge LLM architecture. It assesses quality, correctness, safety, groundedness, and policy compliance, explains failures with evidence, assigns risk levels. Developers can use a **playground** for manual evaluation, an **API** for production integration, and an observability dashboard to monitor AI quality and detect regressions over time.
 
 [DOCUMENT](https://www.notion.so/AI-Sentinel-3b2d5e5e00cb8020b32cee682d42282d?source=copy_link)
 
 LIVE:
 https://sentinel-eight-tau.vercel.app
+
 ### Test in Real-Time
 [AI-Bot](https://chat-bot-ai-sentinel.vercel.app/)
+<br>
+
+***WARNING** 
 
 This Ai-bot is integrated with my AI sentinel system, you can test it in real-time.
 
-**Github** link for this ai-bot is mentioned below
-
-[GITHUB](https://github.com/ujwals05/Chat-bot-AI-Sentinel.git)
+[GITHUB](https://github.com/ujwals05/Chat-bot-AI-Sentinel.git) link for this ai-bot.
 
 
-***NOTE*** : THIS SENTINEL IS RUNNING SEPARATELY.
-THIS IS DEFAULT CONGFIG WITH:<br> Email: *user001@email.com*<br> Password: *password*
+
+
+***NOTE*** : Generate API from the **Application section** of [AISentinel](https://sentinel-eight-tau.vercel.app). The **Application ID** will be in the the **OVERVIEW** section of the **application page**. 
+<br>.
+THIS IS DEFAULT USER FOR TESTING:<br> 
+<h2>Email: *user001@email.com*</h2><br> <h2>Password: *password*</h2>
 
 # Problem
 Companies are increasingly deploying **AI applications**, but they don't have a reliable way to continuously determine whether AI outputs are correct, relevant, safe, grounded, policy-compliant, or trustworthy.
