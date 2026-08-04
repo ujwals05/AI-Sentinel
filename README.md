@@ -23,9 +23,10 @@ This Ai-bot is integrated with my AI sentinel system, you can test it in real-ti
 
 
 ***NOTE*** : Generate API from the **Application section** of [AISentinel](https://sentinel-eight-tau.vercel.app). The **Application ID** will be in the the **OVERVIEW** section of the **application page**. 
-<br>.
-THIS IS DEFAULT USER FOR TESTING:<br> 
-<h2>Email: *user001@email.com*</h2><br> <h2>Password: *password*</h2>
+<br>
+
+<h3>THIS IS DEFAULT USER FOR TESTING:</h3><br> 
+<b>Email: *user001@email.com*</b><br> <b>Password: *password*</b>
 
 # Problem
 Companies are increasingly deploying **AI applications**, but they don't have a reliable way to continuously determine whether AI outputs are correct, relevant, safe, grounded, policy-compliant, or trustworthy.
@@ -34,12 +35,12 @@ Companies are increasingly deploying **AI applications**, but they don't have a 
 
 ## Features
 
-User Authentication (JWT with HTTP-only cookies)  
-API Integration with other ai powered system  
-Multiple LLM for decision making
-Implemepted Transaction to ensure security  
-Multi tentent System  
-Monitoring AI powered application  
+User Authentication (JWT with HTTP-only cookies) <br>
+API Integration with other ai powered system <br>
+Multiple LLM for decision making <br>
+Implemepted Transaction to ensure security <br>
+Multi tentent System <br>
+Monitoring AI powered application <br>
 
 ---
 
@@ -47,22 +48,22 @@ Monitoring AI powered application
 
 ### **Frontend**
 
-- React (Vite)
-- Tailwind CSS
-- React Hot Toast (Notifications)
-- Zustand (State Management)
-- tanstack
-- Axios for API Requests
-- Lucide React (Icon Library)
+- React (Vite) <br>
+- Tailwind CSS <br>
+- React Hot Toast (Notifications) <br>
+- Zustand (State Management) <br>
+- tanstack <br>
+- Axios for API Requests <br>
+- Lucide React (Icon Library) <br>
 
 ### **Backend**
 
-- Node.js + Express
-- Prisma+PostgresSQL
-- JSON Web Tokens (JWT)
-- Bcrypt (Password Hashing)
-- CORS + Cookie Parser
-- Dotenv for Environment Variables
+- Node.js + Express <br>
+- Prisma+PostgresSQL <br>
+- JSON Web Tokens (JWT) <br>
+- Bcrypt (Password Hashing) <br>
+- CORS + Cookie Parser <br>
+- Dotenv for Environment Variables <br>
 
   ## Folder Structure
 
@@ -195,80 +196,65 @@ Monitoring AI powered application
   │   │   └── schemas/
   │   │
   │   └── config/
-  │
-  ├── docs/
-  │   ├── architecture/
-  │   │   └── architecture-diagram.png
-  │   │
-  │   ├── evaluation-methodology.md
-  │   ├── system-design.md
-  │   └── api.md
-  │
-  ├── scripts/
-  │   ├── seed.ts
-  │   └── evaluate-dataset.ts
-  │    ── .env.example
-  │
-  ├
+  │   
   ├── .gitignore
-  ├── README.md
+  └── README.md
   
   ```
   
-  ## Multi-Judge Architecture
+## Multi-Judge Architecture
   Sentinel uses multiple specialized LLM judges instead of relying on a single evaluation prompt.
   
-  # Quality Judge
+## Quality Judge
   Evaluates the overall quality of an AI response.
   
-  # It focuses on factors such as:
+## It focuses on factors such as:
 
-  Relevance
-  Correctness
-  Completeness
-  Instruction adherence
-  Response quality
-  Safety Judge
+  Relevance <br>
+  Correctness <br>
+  Completeness <br>
+  Instruction adherence <br>
+  Response quality <br>
+  Safety Judge <br>
   
-  Evaluates whether an AI response presents potential safety or policy concerns.
+  ***Evaluates whether an AI response presents potential safety or policy concerns.*** <br>
   
-  # It can identify:
+## It can identify: 
   
-  Unsafe content
-  Policy violations
-  Harmful responses
-  High-risk behavior
-  Trust Judge
+  Unsafe content <br>
+  Policy violations <br>
+  Harmful responses <br>
+  High-risk behavior <br>
+  Trust Judge <br>
   
   Evaluates the trustworthiness of the AI response.
   
-  # It focuses on factors such as:
+## It focuses on factors such as:
   
-  Hallucination indicators
-  Groundedness
-  Reliability
-  Factual consistency
-  Confidence in the response
-  Evaluation Aggregation
+  Hallucination indicators <br>
+  Groundedness<br>
+  Reliability<br>
+  Factual consistency<br>
+  Confidence in the response<br>
+  Evaluation Aggregation<br>
   
-  After the individual judges complete their evaluation, Sentinel aggregates the results
+  ***After the individual judges complete their evaluation, Sentinel aggregates the results.***
   
-  # The evaluation system produces:
+## The evaluation system produces:
   
-  Overall Score
-  Risk Level
-  Decision
-  Summary
-  Quality Evaluation
-  Safety Evaluation
-  Trust Evaluation
+  Overall Score<br>
+  Risk Level<br>
+  Decision<br>
+  Summary<br>
+  Quality Evaluation<br>
+  Safety Evaluation<br>
+  Trust Evaluation<br>
+
+  ***This provides a single high-level view of the AI response while preserving the individual judge results for deeper analysis.***
   
-  This provides a single high-level view of the AI response while preserving the individual judge results for deeper analysis.
+# Installation & Setup - Locally
   
-  
-  ## Installation & Setup - Locally
-  
-  ### Prerequisites
+### Prerequisites
   
   Before running Sentinel locally, make sure you have the following installed:
   
@@ -280,7 +266,7 @@ Monitoring AI powered application
   
   ---
   
-  ### Clone the Repository
+### Clone the Repository
   
   ```bash
   git clone https://github.com/ujwals05/AI-Sentinel.git
@@ -288,14 +274,14 @@ Monitoring AI powered application
   ```
 
 
-  ### Set-up Backend
+### Set-up Backend
 
   ```
   cd backend
   npm install
   ```
 
-  ### Create a .env file in the backend directory:
+### Create a .env file in the backend directory:
 
   ```
   PORT = 5000
@@ -316,7 +302,7 @@ Monitoring AI powered application
   NODE_ENV = development
   ```
 
-  ### Set up database
+### Set up database
 
   1. Generate the Prisma Client:
   ```
@@ -360,31 +346,33 @@ Monitoring AI powered application
   http://localhost:5173
   ```
 
-  # Architecture 
+# Architecture 
 
 
-```
-  ┌──────────────────────────┐
-  │       React Frontend     │
-  │    http://localhost:5173 │
-  └────────────┬─────────────┘
-               │
-               │ REST API
-               ▼
-  ┌──────────────────────────┐
-  │   Node.js + Express API  │
-  │    http://localhost:5000 │
-  └────────────┬─────────────┘
-               │
-              ┌┴───────────┐
-              │            │
-              ▼            ▼
-       ┌────────────┐  ┌──────────────┐
-       │ PostgreSQL │  │ Gemini LLM   │
-       │  + Prisma  │  │ + LangGraph  │
-       └────────────┘  └──────────────┘
-```
-### API Integration
+  ```
+    ┌──────────────────────────┐
+    │  React Frontend          │
+    │  http://localhost:5173   │
+    └────────────┬─────────────┘
+                 │
+                 │ REST API
+                 ▼
+    ┌──────────────────────────┐
+    │  Node.js + Express API   │
+    │  http://localhost:5000   │
+    └────────────┬─────────────┘
+                 │
+            ┌────┴──────────┐
+            │               │
+            ▼               ▼
+      ┌────────────┐  ┌──────────────┐
+      │ PostgreSQL │  │ Gemini LLM   │
+      │  + Prisma  │  │ + LangGraph  │
+      └────────────┘  └──────────────┘
+  ```
+
+
+# API Integration
 
 To connect an external AI application with Sentinel, create an application from the Sentinel dashboard and generate an API key.
 
@@ -416,5 +404,3 @@ Content-Type: application/json
  
 
 
-
-https://github.com/ujwals05/AI-Sentinel.git
