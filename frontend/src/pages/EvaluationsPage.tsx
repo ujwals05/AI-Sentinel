@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { Loader2, Search, ClipboardCheck, KeyRound } from 'lucide-react';
 import type { RiskLevel, EvaluationDecision, EvaluationStatus } from '../types';
 import { useEvaluations } from '../hooks/useEvaluations';
 
@@ -33,7 +34,7 @@ function StatusBadge({ status }: { status: EvaluationStatus | string }) {
   };
   return (
     <span className={`font-mono text-[10px] font-bold uppercase px-2 py-0.5 border flex items-center gap-1 w-fit ${map[status] ?? ''}`}>
-      {status === 'RUNNING' && <span className="material-symbols-outlined text-[12px] animate-spin">autorenew</span>}
+      {status === 'RUNNING' && <Loader2 size={12} className="animate-spin" />}
       {status}
     </span>
   );
@@ -114,7 +115,7 @@ export default function EvaluationsPage() {
       {/* Filters */}
       <div className="flex flex-wrap gap-3 items-center">
         <div className="relative">
-          <span className="absolute left-2.5 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant text-[16px]">search</span>
+          <Search size={16} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant" />
           <input
             type="text"
             value={search}
@@ -144,12 +145,12 @@ export default function EvaluationsPage() {
       <div className="bg-white border-2 border-on-surface neo-shadow overflow-hidden">
         {isLoading ? (
           <div className="flex flex-col items-center justify-center py-20 gap-4">
-            <span className="material-symbols-outlined text-4xl animate-spin text-primary">autorenew</span>
+            <Loader2 size={36} className="animate-spin text-primary" />
             <p className="font-geist text-sm font-bold text-on-surface-variant">Loading evaluations...</p>
           </div>
         ) : filtered.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 gap-4">
-            <span className="material-symbols-outlined text-6xl text-outline-variant">fact_check</span>
+            <ClipboardCheck size={60} className="text-outline-variant" />
             <h3 className="font-geist text-lg font-bold text-on-surface-variant">No evaluations found</h3>
             <p className="font-geist text-sm text-on-surface-variant text-center max-w-sm">
               Evaluations are automatically triggered when external applications send data through <code className="font-mono bg-surface-container px-1">/api/v1/ingest</code>.
@@ -158,7 +159,7 @@ export default function EvaluationsPage() {
               to="/api-integration"
               className="flex items-center gap-2 px-4 py-2 bg-primary text-on-primary border-2 border-on-surface neo-shadow font-mono text-xs font-bold hover:neo-shadow-active transition-all"
             >
-              <span className="material-symbols-outlined text-[16px]">key</span>
+              <KeyRound size={16} />
               Set Up Integration
             </Link>
           </div>

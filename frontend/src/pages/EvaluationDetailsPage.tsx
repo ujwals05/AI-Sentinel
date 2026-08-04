@@ -1,4 +1,4 @@
-﻿// --- Reusable "Sample Data" pill ---
+// --- Reusable "Sample Data" pill ---
 
 function SampleDataPill() {
   return (
@@ -52,10 +52,10 @@ export default function EvaluationDetailsPage() {
         </span>
         <div>
           <p style={{ fontFamily: "monospace", fontSize: "11px", fontWeight: 700, color: "#92400e", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "2px" }}>
-            Demo Data — Not Connected to Real Backend
+            Page Not Active — Demo Data Only
           </p>
           <p style={{ fontFamily: "sans-serif", fontSize: "12px", color: "#78350f", lineHeight: 1.5 }}>
-            This evaluation record (EVAL-8291) is static sample data for demonstration purposes only. Real evaluation results will appear here once the evaluation pipeline is connected.
+            This page is currently not active. This evaluation record (EVAL-8291) is static sample data for demonstration purposes only. Real evaluation results will appear here once the evaluation pipeline is connected.
           </p>
         </div>
       </div>

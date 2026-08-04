@@ -1,8 +1,10 @@
+import { Star, Shield, Brain, Coins, FlaskConical, Download, MoreHorizontal, Lightbulb, ArrowRight } from 'lucide-react';
+
 const metrics = [
-  { title: 'Avg Quality Score', value: '0.94', change: '+2.4%', icon: 'grade', isGood: true },
-  { title: 'Safety Violations', value: '12', change: '-5', icon: 'security', isGood: true },
-  { title: 'Hallucination Rate', value: '1.2%', change: '+0.3%', icon: 'psychology_alt', isGood: false },
-  { title: 'Total Tokens Processed', value: '42.8M', change: '+12%', icon: 'toll', isGood: true },
+  { title: 'Avg Quality Score', value: '0.94', change: '+2.4%', icon: Star, isGood: true },
+  { title: 'Safety Violations', value: '12', change: '-5', icon: Shield, isGood: true },
+  { title: 'Hallucination Rate', value: '1.2%', change: '+0.3%', icon: Brain, isGood: false },
+  { title: 'Total Tokens Processed', value: '42.8M', change: '+12%', icon: Coins, isGood: true },
 ];
 
 // ─── Reusable "Sample Data" pill ─────────────────────────────────────────────
@@ -29,12 +31,7 @@ function SampleDataPill() {
         userSelect: 'none',
       }}
     >
-      <span
-        className="material-symbols-outlined"
-        style={{ fontSize: '10px', lineHeight: 1 }}
-      >
-        science
-      </span>
+      <FlaskConical size={12} strokeWidth={2.5} />
       Sample Data
     </span>
   );
@@ -57,7 +54,7 @@ export default function AnalyticsPage() {
             <option>Last 24 Hours</option>
           </select>
           <button className="px-4 py-2 border-2 border-on-surface bg-on-surface text-surface font-mono text-sm font-bold neo-shadow hover:neo-shadow-active transition-all cursor-pointer flex items-center gap-2">
-            <span className="material-symbols-outlined text-[18px]">download</span> Export Report
+            <Download size={18} /> Export Report
           </button>
         </div>
       </div>
@@ -76,18 +73,13 @@ export default function AnalyticsPage() {
           marginTop: '-24px',  // pull up closer to header divider
         }}
       >
-        <span
-          className="material-symbols-outlined"
-          style={{ color: '#b45309', fontSize: '20px', flexShrink: 0, marginTop: '1px' }}
-        >
-          science
-        </span>
+        <FlaskConical size={20} className="text-[#b45309] shrink-0 mt-[1px]" />
         <div>
           <p style={{ fontFamily: 'monospace', fontSize: '11px', fontWeight: 700, color: '#92400e', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '2px' }}>
-            Demo Data — Not Connected to Real Backend
+            Page Not Active — Demo Data Only
           </p>
           <p style={{ fontFamily: 'sans-serif', fontSize: '12px', color: '#78350f', lineHeight: 1.5 }}>
-            All metrics, charts, and insights on this page are static sample data for demonstration purposes only. Real analytics will appear here once backend data ingestion is connected.
+            This page is currently not active. All metrics, charts, and insights on this page are static sample data for demonstration purposes only. Real analytics will appear here once backend data ingestion is connected.
           </p>
         </div>
       </div>
@@ -100,7 +92,7 @@ export default function AnalyticsPage() {
               <p className="font-mono text-xs font-bold text-on-surface-variant uppercase">{m.title}</p>
               <div className="flex items-center gap-2">
                 <SampleDataPill />
-                <span className="material-symbols-outlined text-outline-variant">{m.icon}</span>
+                <m.icon size={18} className="text-outline-variant" />
               </div>
             </div>
             <p className="font-geist text-4xl font-extrabold mb-2">{m.value}</p>
@@ -123,7 +115,7 @@ export default function AnalyticsPage() {
               <h3 className="font-geist text-xl font-bold">Quality vs Volume Trend</h3>
               <SampleDataPill />
             </div>
-            <span className="material-symbols-outlined text-on-surface-variant cursor-pointer">more_horiz</span>
+            <MoreHorizontal size={24} className="text-on-surface-variant cursor-pointer" />
           </div>
           <div className="flex-1 p-6 flex flex-col justify-end gap-2 relative dot-grid">
             {/* Mock Chart representation */}
@@ -147,7 +139,7 @@ export default function AnalyticsPage() {
               <h3 className="font-geist text-xl font-bold">Issue Breakdown</h3>
               <SampleDataPill />
             </div>
-            <span className="material-symbols-outlined text-on-surface-variant cursor-pointer">more_horiz</span>
+            <MoreHorizontal size={24} className="text-on-surface-variant cursor-pointer" />
           </div>
           <div className="flex-1 p-6 flex items-center justify-center gap-12">
             <div className="w-48 h-48 rounded-full border-[16px] border-surface-container relative">
@@ -190,7 +182,7 @@ export default function AnalyticsPage() {
       {/* Insights Section */}
       <div className="bg-surface-container-low border-2 border-on-surface p-8 neo-shadow-sm">
         <h3 className="font-geist text-2xl font-bold mb-6 flex items-center gap-2">
-          <span className="material-symbols-outlined text-primary">lightbulb</span>
+          <Lightbulb size={24} className="text-primary" />
           Automated Insights
           <SampleDataPill />
         </h3>
@@ -198,17 +190,17 @@ export default function AnalyticsPage() {
           <div className="bg-white border-2 border-on-surface p-6 hover:bg-primary-container hover:text-on-primary-container transition-colors group cursor-pointer">
             <h4 className="font-geist text-lg font-bold mb-2 group-hover:text-primary-fixed">Prompt Optimization</h4>
             <p className="font-geist text-sm text-on-surface-variant group-hover:text-on-primary-container mb-4">Adding explicit format instructions to &quot;Support-Bot-v4&quot; could reduce formatting errors by an estimated 15%.</p>
-            <span className="font-mono text-xs font-bold flex items-center gap-1 group-hover:text-primary-fixed">View Details <span className="material-symbols-outlined text-[14px]">arrow_forward</span></span>
+            <span className="font-mono text-xs font-bold flex items-center gap-1 group-hover:text-primary-fixed">View Details <ArrowRight size={14} /></span>
           </div>
           <div className="bg-white border-2 border-on-surface p-6 hover:bg-error-container hover:text-on-error-container transition-colors group cursor-pointer">
             <h4 className="font-geist text-lg font-bold mb-2 group-hover:text-error">Latency Alert</h4>
             <p className="font-geist text-sm text-on-surface-variant group-hover:text-on-error-container mb-4">P99 latency has increased by 400ms during peak hours (14:00-16:00 UTC) over the last 3 days.</p>
-            <span className="font-mono text-xs font-bold flex items-center gap-1 group-hover:text-error">Investigate <span className="material-symbols-outlined text-[14px]">arrow_forward</span></span>
+            <span className="font-mono text-xs font-bold flex items-center gap-1 group-hover:text-error">Investigate <ArrowRight size={14} /></span>
           </div>
           <div className="bg-white border-2 border-on-surface p-6 hover:bg-tertiary-container hover:text-on-tertiary-container transition-colors group cursor-pointer">
             <h4 className="font-geist text-lg font-bold mb-2 group-hover:text-tertiary-fixed">Knowledge Base Stale</h4>
             <p className="font-geist text-sm text-on-surface-variant group-hover:text-on-tertiary-container mb-4">High rate of grounding failures detected for queries related to &quot;Q3 Financials&quot;. Consider updating vector DB.</p>
-            <span className="font-mono text-xs font-bold flex items-center gap-1 group-hover:text-tertiary-fixed">Manage Data <span className="material-symbols-outlined text-[14px]">arrow_forward</span></span>
+            <span className="font-mono text-xs font-bold flex items-center gap-1 group-hover:text-tertiary-fixed">Manage Data <ArrowRight size={14} /></span>
           </div>
         </div>
       </div>

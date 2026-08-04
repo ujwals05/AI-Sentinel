@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Loader2, LineChart, CheckCircle2, ChevronDown, Gavel, Shield, TriangleAlert, Lightbulb } from 'lucide-react';
 import { useApplications } from '../hooks/useApplications';
 import { useEvaluatePlayground } from '../hooks/usePlayground';
 import type { PlaygroundEvaluationResponse } from '../services/api.service';
@@ -192,7 +193,7 @@ export default function PlaygroundPage() {
               >
                 {isEvaluating ? (
                   <span className="flex items-center justify-center gap-2">
-                    <span className="material-symbols-outlined text-[18px] animate-spin">autorenew</span>
+                    <Loader2 size={18} className="animate-spin" />
                     EVALUATING...
                   </span>
                 ) : (
@@ -207,9 +208,7 @@ export default function PlaygroundPage() {
             {!results ? (
               /* Empty State */
               <div className="flex-1 flex flex-col items-center justify-center border-2 border-dashed border-outline-variant rounded-xl p-10 text-center bg-surface-container-low min-h-[300px]">
-                <span className="material-symbols-outlined text-5xl text-outline-variant mb-3">
-                  analytics
-                </span>
+                <LineChart size={48} className="text-outline-variant mb-3" />
                 <h3 className="font-geist text-lg font-bold text-on-surface-variant mb-1.5">
                   Submit an AI response to begin
                 </h3>
@@ -256,19 +255,18 @@ export default function PlaygroundPage() {
                       onClick={() => toggleDetails('quality')}
                     >
                       <div className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-[20px] text-primary">verified</span>
+                        <CheckCircle2 size={20} className="text-primary" />
                         <span className="font-geist text-sm font-bold">Quality Judge</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <span className="font-mono text-xs bg-secondary-container px-2 border-2 border-on-surface font-bold">
                           92%
                         </span>
-                        <span
-                          className={`material-symbols-outlined text-[18px] transition-transform duration-200 ${expandedDetails['quality'] ? 'rotate-180' : ''
+                        <ChevronDown
+                          size={18}
+                          className={`transition-transform duration-200 ${expandedDetails['quality'] ? 'rotate-180' : ''
                             }`}
-                        >
-                          expand_more
-                        </span>
+                        />
                       </div>
                     </div>
                     {expandedDetails['quality'] && (
@@ -296,19 +294,18 @@ export default function PlaygroundPage() {
                       onClick={() => toggleDetails('safety')}
                     >
                       <div className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-[20px] text-error">gavel</span>
+                        <Gavel size={20} className="text-error" />
                         <span className="font-geist text-sm font-bold">Safety Judge</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <span className="font-mono text-xs bg-error-container px-2 border-2 border-on-surface font-bold">
                           100%
                         </span>
-                        <span
-                          className={`material-symbols-outlined text-[18px] transition-transform duration-200 ${expandedDetails['safety'] ? 'rotate-180' : ''
+                        <ChevronDown
+                          size={18}
+                          className={`transition-transform duration-200 ${expandedDetails['safety'] ? 'rotate-180' : ''
                             }`}
-                        >
-                          expand_more
-                        </span>
+                        />
                       </div>
                     </div>
                     {expandedDetails['safety'] && (
@@ -332,19 +329,18 @@ export default function PlaygroundPage() {
                       onClick={() => toggleDetails('trust')}
                     >
                       <div className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-[20px] text-tertiary">shield</span>
+                        <Shield size={20} className="text-tertiary" />
                         <span className="font-geist text-sm font-bold">Trust Judge</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <span className="font-mono text-xs bg-tertiary-fixed px-2 border-2 border-on-surface font-bold">
                           61%
                         </span>
-                        <span
-                          className={`material-symbols-outlined text-[18px] transition-transform duration-200 ${expandedDetails['trust'] ? 'rotate-180' : ''
+                        <ChevronDown
+                          size={18}
+                          className={`transition-transform duration-200 ${expandedDetails['trust'] ? 'rotate-180' : ''
                             }`}
-                        >
-                          expand_more
-                        </span>
+                        />
                       </div>
                     </div>
                     {expandedDetails['trust'] && (
@@ -383,7 +379,7 @@ export default function PlaygroundPage() {
                     <ul className="space-y-1.5">
                       {[...(results.judges.quality?.issues || []), ...(results.judges.safety?.issues || []), ...(results.judges.trust?.issues || [])].map((issue, idx) => (
                         <li key={idx} className="flex gap-2 font-mono text-[11px] font-bold text-on-surface bg-error-container p-2 border-2 border-error">
-                          <span className="material-symbols-outlined text-[14px]">warning</span>
+                          <TriangleAlert size={14} />
                           {issue}
                         </li>
                       ))}
@@ -399,7 +395,7 @@ export default function PlaygroundPage() {
                     <ul className="space-y-1.5">
                       {[...(results.judges.quality?.recommendations || []), ...(results.judges.safety?.recommendations || []), ...(results.judges.trust?.recommendations || [])].map((rec, idx) => (
                         <li key={idx} className="flex gap-2 font-mono text-[11px] font-bold text-on-surface bg-secondary-container p-2 border-2 border-secondary">
-                          <span className="material-symbols-outlined text-[14px]">lightbulb</span>
+                          <Lightbulb size={14} />
                           {rec}
                         </li>
                       ))}
