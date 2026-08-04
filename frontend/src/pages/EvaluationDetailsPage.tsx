@@ -1,6 +1,65 @@
+﻿// --- Reusable "Sample Data" pill ---
+
+function SampleDataPill() {
+  return (
+    <span
+      title="This record is a static demo and is not connected to real backend data."
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "4px",
+        padding: "2px 7px",
+        fontSize: "9px",
+        fontFamily: "monospace",
+        fontWeight: 700,
+        letterSpacing: "0.06em",
+        textTransform: "uppercase",
+        color: "#92400e",
+        background: "#fef3c7",
+        border: "1.5px solid #d97706",
+        borderRadius: "2px",
+        flexShrink: 0,
+        userSelect: "none",
+      }}
+    >
+      <span className="material-symbols-outlined" style={{ fontSize: "10px", lineHeight: 1 }}>
+        science
+      </span>
+      Sample Data
+    </span>
+  );
+}
+
 export default function EvaluationDetailsPage() {
   return (
     <main className="p-6 max-w-[1400px] mx-auto w-full space-y-5">
+
+      {/* Demo Data Notice */}
+      <div
+        role="note"
+        style={{
+          display: "flex",
+          alignItems: "flex-start",
+          gap: "10px",
+          padding: "12px 16px",
+          background: "#fffbeb",
+          border: "2px solid #d97706",
+          boxShadow: "3px 3px 0px 0px rgba(0,0,0,1)",
+        }}
+      >
+        <span className="material-symbols-outlined" style={{ color: "#b45309", fontSize: "20px", flexShrink: 0, marginTop: "1px" }}>
+          science
+        </span>
+        <div>
+          <p style={{ fontFamily: "monospace", fontSize: "11px", fontWeight: 700, color: "#92400e", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "2px" }}>
+            Demo Data — Not Connected to Real Backend
+          </p>
+          <p style={{ fontFamily: "sans-serif", fontSize: "12px", color: "#78350f", lineHeight: 1.5 }}>
+            This evaluation record (EVAL-8291) is static sample data for demonstration purposes only. Real evaluation results will appear here once the evaluation pipeline is connected.
+          </p>
+        </div>
+      </div>
+
       {/* Hero Section: Header Details */}
       <section className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-5 border-b-2 border-outline-variant">
         <div className="space-y-2">
@@ -43,42 +102,49 @@ export default function EvaluationDetailsPage() {
         <div className="col-span-1 lg:col-span-8 space-y-6">
 
           {/* Score Breakdown Bento */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="p-4 bg-white border-2 border-on-surface neo-shadow">
-              <div className="flex justify-between items-center mb-3">
-                <span className="font-mono text-[10px] font-bold uppercase text-on-surface-variant">Quality</span>
-                <span className="font-geist text-xl font-bold">72</span>
-              </div>
-              <div className="h-3 bg-surface-container border-2 border-on-surface">
-                <div className="h-full bg-primary" style={{ width: '72%' }} />
-              </div>
+          <div>
+            <div className="flex items-center gap-2 mb-3">
+              <p className="font-mono text-[10px] font-bold text-on-surface-variant uppercase">Score Breakdown</p>
+              <SampleDataPill />
             </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-4 bg-white border-2 border-on-surface neo-shadow">
+                <div className="flex justify-between items-center mb-3">
+                  <span className="font-mono text-[10px] font-bold uppercase text-on-surface-variant">Quality</span>
+                  <span className="font-geist text-xl font-bold">72</span>
+                </div>
+                <div className="h-3 bg-surface-container border-2 border-on-surface">
+                  <div className="h-full bg-primary" style={{ width: "72%" }} />
+                </div>
+              </div>
 
-            <div className="p-4 bg-white border-2 border-on-surface neo-shadow">
-              <div className="flex justify-between items-center mb-3">
-                <span className="font-mono text-[10px] font-bold uppercase text-on-surface-variant">Safety</span>
-                <span className="font-geist text-xl font-bold">100</span>
+              <div className="p-4 bg-white border-2 border-on-surface neo-shadow">
+                <div className="flex justify-between items-center mb-3">
+                  <span className="font-mono text-[10px] font-bold uppercase text-on-surface-variant">Safety</span>
+                  <span className="font-geist text-xl font-bold">100</span>
+                </div>
+                <div className="h-3 bg-surface-container border-2 border-on-surface">
+                  <div className="h-full bg-emerald-500" style={{ width: "100%" }} />
+                </div>
               </div>
-              <div className="h-3 bg-surface-container border-2 border-on-surface">
-                <div className="h-full bg-emerald-500" style={{ width: '100%' }} />
-              </div>
-            </div>
 
-            <div className="p-4 bg-white border-2 border-on-surface neo-shadow">
-              <div className="flex justify-between items-center mb-3">
-                <span className="font-mono text-[10px] font-bold uppercase text-on-surface-variant">Trust</span>
-                <span className="font-geist text-xl font-bold">45</span>
-              </div>
-              <div className="h-3 bg-surface-container border-2 border-on-surface">
-                <div className="h-full bg-error" style={{ width: '45%' }} />
+              <div className="p-4 bg-white border-2 border-on-surface neo-shadow">
+                <div className="flex justify-between items-center mb-3">
+                  <span className="font-mono text-[10px] font-bold uppercase text-on-surface-variant">Trust</span>
+                  <span className="font-geist text-xl font-bold">45</span>
+                </div>
+                <div className="h-3 bg-surface-container border-2 border-on-surface">
+                  <div className="h-full bg-error" style={{ width: "45%" }} />
+                </div>
               </div>
             </div>
           </div>
 
           {/* Criteria Table */}
           <div className="bg-white border-2 border-on-surface neo-shadow overflow-hidden">
-            <div className="p-3 border-b-2 border-on-surface bg-surface-container-low">
+            <div className="p-3 border-b-2 border-on-surface bg-surface-container-low flex items-center gap-3">
               <h3 className="font-geist text-lg font-bold">Individual Criteria</h3>
+              <SampleDataPill />
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
@@ -137,6 +203,7 @@ export default function EvaluationDetailsPage() {
             <div className="flex items-center gap-2 text-primary">
               <span className="material-symbols-outlined text-[20px]">auto_awesome</span>
               <h3 className="font-geist text-lg font-bold">Judge Reasoning</h3>
+              <SampleDataPill />
             </div>
             <p className="font-geist text-sm text-on-surface-variant leading-relaxed">
               The evaluation of EVAL-8291 highlights a critical divergence between safety and factual integrity.
@@ -200,9 +267,7 @@ export default function EvaluationDetailsPage() {
 
           {/* Illustration/Visual Asset */}
           <div className="relative h-36 border-2 border-on-surface overflow-hidden group">
-            <div
-              className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 bg-slate-200 flex items-center justify-center dot-grid"
-            >
+            <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 bg-slate-200 flex items-center justify-center dot-grid">
               <span className="material-symbols-outlined text-slate-400 text-5xl">schema</span>
             </div>
             <div className="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>

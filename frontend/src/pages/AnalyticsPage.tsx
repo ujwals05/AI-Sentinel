@@ -5,6 +5,41 @@ const metrics = [
   { title: 'Total Tokens Processed', value: '42.8M', change: '+12%', icon: 'toll', isGood: true },
 ];
 
+// ─── Reusable "Sample Data" pill ─────────────────────────────────────────────
+
+function SampleDataPill() {
+  return (
+    <span
+      title="This data is for demonstration purposes only and is not connected to real backend data."
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '4px',
+        padding: '2px 7px',
+        fontSize: '9px',
+        fontFamily: 'monospace',
+        fontWeight: 700,
+        letterSpacing: '0.06em',
+        textTransform: 'uppercase',
+        color: '#92400e',
+        background: '#fef3c7',
+        border: '1.5px solid #d97706',
+        borderRadius: '2px',
+        flexShrink: 0,
+        userSelect: 'none',
+      }}
+    >
+      <span
+        className="material-symbols-outlined"
+        style={{ fontSize: '10px', lineHeight: 1 }}
+      >
+        science
+      </span>
+      Sample Data
+    </span>
+  );
+}
+
 export default function AnalyticsPage() {
   return (
     <div className="p-8 max-w-[1600px] mx-auto w-full space-y-12 h-full overflow-y-auto">
@@ -27,13 +62,46 @@ export default function AnalyticsPage() {
         </div>
       </div>
 
+      {/* ── Demo Data Notice ─────────────────────────────────────────────────── */}
+      <div
+        role="note"
+        style={{
+          display: 'flex',
+          alignItems: 'flex-start',
+          gap: '10px',
+          padding: '12px 16px',
+          background: '#fffbeb',
+          border: '2px solid #d97706',
+          boxShadow: '3px 3px 0px 0px rgba(0,0,0,1)',
+          marginTop: '-24px',  // pull up closer to header divider
+        }}
+      >
+        <span
+          className="material-symbols-outlined"
+          style={{ color: '#b45309', fontSize: '20px', flexShrink: 0, marginTop: '1px' }}
+        >
+          science
+        </span>
+        <div>
+          <p style={{ fontFamily: 'monospace', fontSize: '11px', fontWeight: 700, color: '#92400e', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '2px' }}>
+            Demo Data — Not Connected to Real Backend
+          </p>
+          <p style={{ fontFamily: 'sans-serif', fontSize: '12px', color: '#78350f', lineHeight: 1.5 }}>
+            All metrics, charts, and insights on this page are static sample data for demonstration purposes only. Real analytics will appear here once backend data ingestion is connected.
+          </p>
+        </div>
+      </div>
+
       {/* Overview Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {metrics.map(m => (
           <div key={m.title} className="bg-white border-2 border-on-surface p-6 neo-shadow hover:translate-y-[-4px] transition-transform">
             <div className="flex justify-between items-start mb-4">
               <p className="font-mono text-xs font-bold text-on-surface-variant uppercase">{m.title}</p>
-              <span className="material-symbols-outlined text-outline-variant">{m.icon}</span>
+              <div className="flex items-center gap-2">
+                <SampleDataPill />
+                <span className="material-symbols-outlined text-outline-variant">{m.icon}</span>
+              </div>
             </div>
             <p className="font-geist text-4xl font-extrabold mb-2">{m.value}</p>
             <div className="flex items-center gap-1">
@@ -51,7 +119,10 @@ export default function AnalyticsPage() {
         
         <div className="bg-white border-2 border-on-surface neo-shadow flex flex-col h-[400px]">
           <div className="p-6 border-b-2 border-on-surface flex justify-between items-center bg-surface-container-low">
-            <h3 className="font-geist text-xl font-bold">Quality vs Volume Trend</h3>
+            <div className="flex items-center gap-3">
+              <h3 className="font-geist text-xl font-bold">Quality vs Volume Trend</h3>
+              <SampleDataPill />
+            </div>
             <span className="material-symbols-outlined text-on-surface-variant cursor-pointer">more_horiz</span>
           </div>
           <div className="flex-1 p-6 flex flex-col justify-end gap-2 relative dot-grid">
@@ -72,7 +143,10 @@ export default function AnalyticsPage() {
 
         <div className="bg-white border-2 border-on-surface neo-shadow flex flex-col h-[400px]">
           <div className="p-6 border-b-2 border-on-surface flex justify-between items-center bg-surface-container-low">
-            <h3 className="font-geist text-xl font-bold">Issue Breakdown</h3>
+            <div className="flex items-center gap-3">
+              <h3 className="font-geist text-xl font-bold">Issue Breakdown</h3>
+              <SampleDataPill />
+            </div>
             <span className="material-symbols-outlined text-on-surface-variant cursor-pointer">more_horiz</span>
           </div>
           <div className="flex-1 p-6 flex items-center justify-center gap-12">
@@ -118,6 +192,7 @@ export default function AnalyticsPage() {
         <h3 className="font-geist text-2xl font-bold mb-6 flex items-center gap-2">
           <span className="material-symbols-outlined text-primary">lightbulb</span>
           Automated Insights
+          <SampleDataPill />
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white border-2 border-on-surface p-6 hover:bg-primary-container hover:text-on-primary-container transition-colors group cursor-pointer">
@@ -141,3 +216,5 @@ export default function AnalyticsPage() {
     </div>
   );
 }
+
+
