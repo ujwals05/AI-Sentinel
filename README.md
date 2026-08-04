@@ -4,7 +4,22 @@
 
 [DOCUMENT](https://www.notion.so/AI-Sentinel-3b2d5e5e00cb8020b32cee682d42282d?source=copy_link)
 
-[LIVE](https://sentinel-eight-tau.vercel.app/login)
+[AI-SENTINEL LIVE](https://sentinel-eight-tau.vercel.app/login)
+
+### Test in Real-Time
+[AI-Bot](https://chat-bot-ai-sentinel.vercel.app/)
+
+This Ai-bot is integrated with my AI sentinel system, you can test it in real-time.
+
+**Github** link for this ai-bot is mentioned below
+
+[GITHUB](https://github.com/ujwals05/Chat-bot-AI-Sentinel.git)
+
+
+***NOTE*** : THIS SENTINEL IS RUNNING SEPARATELY.
+THIS IS DEFAULT CONGFIG WITH: 
+Email: *user001@email.com* 
+Password: *password*
 
 # Problem
 Companies are increasingly deploying **AI applications**, but they don't have a reliable way to continuously determine whether AI outputs are correct, relevant, safe, grounded, policy-compliant, or trustworthy.
