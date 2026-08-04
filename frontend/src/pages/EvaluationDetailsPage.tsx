@@ -1,3 +1,5 @@
+import { FlaskConical, ChevronRight, Sparkles, CheckCircle2, Network } from 'lucide-react';
+
 // --- Reusable "Sample Data" pill ---
 
 function SampleDataPill() {
@@ -22,9 +24,7 @@ function SampleDataPill() {
         userSelect: "none",
       }}
     >
-      <span className="material-symbols-outlined" style={{ fontSize: "10px", lineHeight: 1 }}>
-        science
-      </span>
+      <FlaskConical size={12} strokeWidth={2.5} />
       Sample Data
     </span>
   );
@@ -47,9 +47,7 @@ export default function EvaluationDetailsPage() {
           boxShadow: "3px 3px 0px 0px rgba(0,0,0,1)",
         }}
       >
-        <span className="material-symbols-outlined" style={{ color: "#b45309", fontSize: "20px", flexShrink: 0, marginTop: "1px" }}>
-          science
-        </span>
+        <FlaskConical size={20} className="text-[#b45309] shrink-0 mt-[1px]" />
         <div>
           <p style={{ fontFamily: "monospace", fontSize: "11px", fontWeight: 700, color: "#92400e", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "2px" }}>
             Page Not Active — Demo Data Only
@@ -65,7 +63,7 @@ export default function EvaluationDetailsPage() {
         <div className="space-y-2">
           <nav className="flex items-center gap-1.5 font-mono text-[10px] font-bold text-on-surface-variant uppercase">
             <span>Evaluations</span>
-            <span className="material-symbols-outlined text-[12px]">chevron_right</span>
+            <ChevronRight size={12} />
             <span className="text-on-surface">EVAL-8291</span>
           </nav>
           <div className="flex flex-wrap items-center gap-3">
@@ -201,7 +199,7 @@ export default function EvaluationDetailsPage() {
           {/* Judge Reasoning */}
           <div className="p-5 bg-white border-2 border-on-surface neo-shadow space-y-3">
             <div className="flex items-center gap-2 text-primary">
-              <span className="material-symbols-outlined text-[20px]">auto_awesome</span>
+              <Sparkles size={20} />
               <h3 className="font-geist text-lg font-bold">Judge Reasoning</h3>
               <SampleDataPill />
             </div>
@@ -248,15 +246,15 @@ export default function EvaluationDetailsPage() {
             <h4 className="font-geist text-lg font-bold mb-3">Recommendations</h4>
             <ul className="space-y-3">
               <li className="flex gap-2">
-                <span className="material-symbols-outlined text-[18px] text-primary mt-0.5">check_circle</span>
+                <CheckCircle2 size={18} className="text-primary mt-0.5" />
                 <p className="font-geist text-sm">Increase grounding weight for factual queries in the prompt template.</p>
               </li>
               <li className="flex gap-2">
-                <span className="material-symbols-outlined text-[18px] text-primary mt-0.5">check_circle</span>
+                <CheckCircle2 size={18} className="text-primary mt-0.5" />
                 <p className="font-geist text-sm">Enable &apos;Strict&apos; citation mode to ensure all numbers are linked to source.</p>
               </li>
               <li className="flex gap-2">
-                <span className="material-symbols-outlined text-[18px] text-primary mt-0.5">check_circle</span>
+                <CheckCircle2 size={18} className="text-primary mt-0.5" />
                 <p className="font-geist text-sm">Add a second-pass verification step for high-risk economic data.</p>
               </li>
             </ul>
@@ -268,7 +266,7 @@ export default function EvaluationDetailsPage() {
           {/* Illustration/Visual Asset */}
           <div className="relative h-36 border-2 border-on-surface overflow-hidden group">
             <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 bg-slate-200 flex items-center justify-center dot-grid">
-              <span className="material-symbols-outlined text-slate-400 text-5xl">schema</span>
+              <Network size={48} className="text-slate-400" />
             </div>
             <div className="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
             <div className="absolute bottom-3 left-3 bg-white px-2 py-0.5 border-2 border-on-surface font-mono text-[10px] font-bold">
