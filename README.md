@@ -4,7 +4,7 @@
 
 [DOCUMENT](https://www.notion.so/AI-Sentinel-3b2d5e5e00cb8020b32cee682d42282d?source=copy_link)
 
-[LIVE](https://sentinel-eight-tau.vercel.app/)
+[LIVE](https://sentinel-eight-tau.vercel.app/login)
 
 # Problem
 Companies are increasingly deploying **AI applications**, but they don't have a reliable way to continuously determine whether AI outputs are correct, relevant, safe, grounded, policy-compliant, or trustworthy.
