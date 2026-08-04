@@ -10,11 +10,10 @@ LIVE:
 https://sentinel-eight-tau.vercel.app
 
 ### Test in Real-Time
-[AI-Bot](https://chat-bot-ai-sentinel.vercel.app/)
+[Chat-Bot](https://chat-bot-ai-sentinel.vercel.app/)
 <br>
 
-***WARNING** 
-
+**WARNING**
 This Ai-bot is integrated with my AI sentinel system, you can test it in real-time.
 
 [GITHUB](https://github.com/ujwals05/Chat-bot-AI-Sentinel.git) link for this ai-bot.
@@ -25,7 +24,7 @@ This Ai-bot is integrated with my AI sentinel system, you can test it in real-ti
 ***NOTE*** : Generate API from the **Application section** of [AISentinel](https://sentinel-eight-tau.vercel.app). The **Application ID** will be in the the **OVERVIEW** section of the **application page**. 
 <br>
 
-<h3>THIS IS DEFAULT USER FOR TESTING:</h3><br> 
+### THIS IS DEFAULT USER FOR TESTING: ### 
 <b>Email: *user001@email.com*</b><br> <b>Password: *password*</b>
 
 # Problem
@@ -41,6 +40,29 @@ Multiple LLM for decision making <br>
 Implemepted Transaction to ensure security <br>
 Multi tentent System <br>
 Monitoring AI powered application <br>
+
+---
+# Usage Instruction
+
+### Step-1
+Login to [AISentinel](https://sentinel-eight-tau.vercel.app). 
+
+### Step-2
+Go to the **Application section** of [AISentinel](https://sentinel-eight-tau.vercel.app). 
+
+### Step-3
+Copy the **Application ID** from the **OVERVIEW** section of the **application page**.  and paste it in the **Application ID** field of the [AI-Bot](https://chat-bot-ai-sentinel.vercel.app).
+
+### Step-4
+Create **API-KEY** from application section and copy the api key. <br>
+***NOTE:** API-KEY will be display only once after creation.
+
+### Step-5
+Follow the instructions in the **[AI-Bot](https://chat-bot-ai-sentinel.vercel.app/docs)** to integrate it with your AI application. <br>
+(OR) <br>
+To test this out use (chat-bot)[https://chat-bot-ai-sentinel.vercel.app/],by applying **API-key** along with **application-id**
+
+
 
 ---
 
@@ -195,7 +217,7 @@ Monitoring AI powered application <br>
   │   │   ├── types/
   │   │   └── schemas/
   │   │
-  │   └── config/
+  │   └── config/ 
   │   
   ├── .gitignore
   └── README.md
