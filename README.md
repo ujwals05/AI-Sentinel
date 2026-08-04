@@ -195,110 +195,56 @@ Monitoring AI powered application
   ```
   
   ## Multi-Judge Architecture
+  Sentinel uses multiple specialized LLM judges instead of relying on a single evaluation prompt.
+  
+  # Quality Judge
+  Evaluates the overall quality of an AI response.
+  
+  # It focuses on factors such as:
 
-Sentinel uses multiple specialized LLM judges instead of relying on a single evaluation prompt.
-
-Quality Judge
-
-Evaluates the overall quality of an AI response.
-
-It focuses on factors such as:
-
-Relevance
-Correctness
-Completeness
-Instruction adherence
-Response quality
-Safety Judge
-
-Evaluates whether an AI response presents potential safety or policy concerns.
-
-It can identify:
-
-Unsafe content
-Policy violations
-Harmful responses
-High-risk behavior
-Trust Judge
-
-Evaluates the trustworthiness of the AI response.
-
-It focuses on factors such as:
-
-Hallucination indicators
-Groundedness
-Reliability
-Factual consistency
-Confidence in the response
-Evaluation Aggregation
-
-After the individual judges complete their evaluation, Sentinel aggregates the results.
-
-The evaluation system produces:
-
-Overall Score
-Risk Level
-Decision
-Summary
-Quality Evaluation
-Safety Evaluation
-Trust Evaluation
-
-This provides a single high-level view of the AI response while preserving the individual judge results for deeper analysis.
-
-
-
-  Multi-Judge Architecture
-
-Sentinel uses multiple specialized LLM judges instead of relying on a single evaluation prompt.
-
-Quality Judge
-
-Evaluates the overall quality of an AI response.
-
-It focuses on factors such as:
-
-Relevance
-Correctness
-Completeness
-Instruction adherence
-Response quality
-Safety Judge
-
-Evaluates whether an AI response presents potential safety or policy concerns.
-
-It can identify:
-
-Unsafe content
-Policy violations
-Harmful responses
-High-risk behavior
-Trust Judge
-
-Evaluates the trustworthiness of the AI response.
-
-It focuses on factors such as:
-
-Hallucination indicators
-Groundedness
-Reliability
-Factual consistency
-Confidence in the response
-Evaluation Aggregation
-
-After the individual judges complete their evaluation, Sentinel aggregates the results.
-
-The evaluation system produces:
-
-Overall Score
-Risk Level
-Decision
-Summary
-Quality Evaluation
-Safety Evaluation
-Trust Evaluation
-
-This provides a single high-level view of the AI response while preserving the individual judge results for deeper analysis.
+  Relevance
+  Correctness
+  Completeness
+  Instruction adherence
+  Response quality
+  Safety Judge
+  
+  Evaluates whether an AI response presents potential safety or policy concerns.
+  
+  # It can identify:
+  
+  Unsafe content
+  Policy violations
+  Harmful responses
+  High-risk behavior
+  Trust Judge
+  
+  Evaluates the trustworthiness of the AI response.
+  
+  # It focuses on factors such as:
+  
+  Hallucination indicators
+  Groundedness
+  Reliability
+  Factual consistency
+  Confidence in the response
+  Evaluation Aggregation
+  
+  After the individual judges complete their evaluation, Sentinel aggregates the results
+  
+  # The evaluation system produces:
+  
+  Overall Score
+  Risk Level
+  Decision
+  Summary
+  Quality Evaluation
+  Safety Evaluation
+  Trust Evaluation
+  
+  This provides a single high-level view of the AI response while preserving the individual judge results for deeper analysis.
+  
+  
 
   ## Installation & Setup -Locally
 
