@@ -341,7 +341,8 @@ Monitoring AI powered application
 
   # Architecture 
 
-  ```
+
+```
   ┌──────────────────────────┐
   │       React Frontend     │
   │    http://localhost:5173 │
@@ -353,14 +354,44 @@ Monitoring AI powered application
   │   Node.js + Express API  │
   │    http://localhost:5000 │
   └────────────┬─────────────┘
-             │
-       ┌─────┴──────┐
-       │            │
-       ▼            ▼
-┌────────────┐  ┌──────────────┐
-│ PostgreSQL │  │ Gemini LLM   │
-│  + Prisma  │  │ + LangGraph  │
-└────────────┘  └──────────────┘
+               │
+              ┌┴───────────┐
+              │            │
+              ▼            ▼
+       ┌────────────┐  ┌──────────────┐
+       │ PostgreSQL │  │ Gemini LLM   │
+       │  + Prisma  │  │ + LangGraph  │
+       └────────────┘  └──────────────┘
+```
+### API Integration
+
+To connect an external AI application with Sentinel, create an application from the Sentinel dashboard and generate an API key.
+
+The external application can then send AI interactions to the Sentinel ingestion endpoint
+
+```
+POST /api/v1/ingest
+X-API-Key: your_api_key
+Idempotency-Key: unique_request_id
+Content-Type: application/json
+```
+**The request can contain information such as:**
+
+```
+{
+  "conversationId": "conversation-123",
+  "messages": [
+    {
+      "role": "USER",
+      "content": "Explain quantum computing."
+    },
+    {
+      "role": "ASSISTANT",
+      "content": "Quantum computing uses quantum mechanical phenomena..."
+    }
+  ]
+}
+```
  
 
 
