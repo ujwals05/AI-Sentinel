@@ -6,8 +6,6 @@
 
 [LIVE](https://sentinel-eight-tau.vercel.app/)
 
-LIVE
-
 # Problem
 Companies are increasingly deploying **AI applications**, but they don't have a reliable way to continuously determine whether AI outputs are correct, relevant, safe, grounded, policy-compliant, or trustworthy.
 
@@ -49,151 +47,151 @@ Monitoring AI powered application
 
   ```
   sisa-ai-judge/
-│
-├── apps/
-│   │
-│   ├── web/                              # React Frontend
-│   │   ├── public/
-│   │   │
-│   │   └── src/
-│   │       ├── assets/
-│   │       │
-│   │       ├── components/
-│   │       │   └── ALL COMPONENTS
-│   │       │
-│   │       ├── pages/
-│   │       │   └── ALL PAGES
-│   │       │
-│   │       ├── hooks/
-│   │       │
-│   │       ├── services/
-│   │       │   └── api.ts
-│   │       │
-│   │       ├── stores/
-│   │       │
-│   │       ├── types/
-│   │       │
-│   │       ├── utils/
-│   │       │
-│   │       ├── App.tsx
-│   │       └── main.tsx
-│   │
-│   │
-│   └── api/                              # Node.js Backend
-│       │
-│       ├── src/
-│       │   │
-│       │   ├── config/
-│       │   │   └── env.ts
-│       │   │
-│       │   ├── MODULES/
-│       │   │   └──ALL MODULES
-│       │   │
-│       │   ├── routes/
-│       │   │   └── ALL ROUTES
-│       │   │
-│       │   ├── middlewares/
-│       │   │   └── ALL MIDDLEWARES
-│       │   │
-│       │   ├── lib/
-│       │   │   └── prisma
-│       │   │
-│       │   ├── ai/
-│       │   │   │
-│       │   │   ├── models/
-│       │   │   │   ├── llm.factory.ts
-│       │   │   │   └── model.config.ts
-│       │   │   │
-│       │   │   ├── prompts/
-│       │   │   │   ├── quality.prompt.ts
-│       │   │   │   ├── safety.prompt.ts
-│       │   │   │   └── trust.prompt.ts
-│       │   │   │
-│       │   │   ├── schemas/
-│       │   │   │   ├── judge.schema.ts
-│       │   │   │   └── evaluation.schema.ts
-│       │   │   │
-│       │   │   ├── judges/
-│       │   │   │   ├── quality.judge.ts
-│       │   │   │   ├── safety.judge.ts
-│       │   │   │   └── trust.judge.ts
-│       │   │   │
-│       │   │   ├── graph/
-│       │   │   │   ├── state.ts
-│       │   │   │   ├── nodes/
-│       │   │   │   │   ├── validate-input.node.ts
-│       │   │   │   │   ├── prepare-context.node.ts
-│       │   │   │   │   ├── quality.node.ts
-│       │   │   │   │   ├── safety.node.ts
-│       │   │   │   │   ├── trust.node.ts
-│       │   │   │   │   ├── consensus.node.ts
-│       │   │   │   │   ├── risk.node.ts
-│       │   │   │   │   ├── human-review.node.ts
-│       │   │   │   │   └── finalize.node.ts
-│       │   │   │   │
-│       │   │   │   ├── edges/
-│       │   │   │   │   └── routing.ts
-│       │   │   │   │
-│       │   │   │   └── evaluation.graph.ts
-│       │   │   │
-│       │   │   ├── consensus/
-│       │   │   │   ├── consensus.engine.ts
-│       │   │   │   └── confidence.calculator.ts
-│       │   │   │
-│       │   │   ├── hallucination/
-│       │   │   │   ├── claim-extractor.ts
-│       │   │   │   ├── claim-verifier.ts
-│       │   │   │   └── hallucination-detector.ts
-│       │   │   │
-│       │   │   └── risk/
-│       │   │       └── risk.engine.ts
-│       │   │
-│       │   ├── types/
-│       │   │   ├── evaluation.types.ts
-│       │   │   ├── judge.types.ts
-│       │   │   └── risk.types.ts
-│       │   │
-│       │   ├── utils/
-│       │   │   └── ALL UTILS
-│       │   │
-│       │   ├── app.ts
-│       │   └── index.ts
-│       │
-│       ├── prisma/
-│       │   ├── schema.prisma
-│       │   └── migrations/
-│       │
-│       ├── tests/
-│       │   ├── unit/
-│       │   ├── integration/
-│       │   └── evaluation/
-│       │
-│       ├── package.json
-│       └── tsconfig.json
-│
-├── packages/
-│   ├── shared/
-│   │   ├── types/
-│   │   └── schemas/
-│   │
-│   └── config/
-│
-├── docs/
-│   ├── architecture/
-│   │   └── architecture-diagram.png
-│   │
-│   ├── evaluation-methodology.md
-│   ├── system-design.md
-│   └── api.md
-│
-├── scripts/
-│   ├── seed.ts
-│   └── evaluate-dataset.ts
-│    ── .env.example
-│
-├
-├── .gitignore
-├── README.md
+  ├── apps/
+  │   │
+  │   ├── web/                              
+  │   │   ├── public/
+  │   │   │
+  │   │   └── src/
+  │   │       ├── assets/
+  │   │       │
+  │   │       ├── components/
+  │   │       │   └── ALL COMPONENTS
+  │   │       │
+  │   │       ├── pages/
+  │   │       │   └── ALL PAGES
+  │   │       │
+  │   │       ├── hooks/
+  │   │       │
+  │   │       ├── services/
+  │   │       │   └── api.ts
+  │   │       │
+  │   │       ├── stores/
+  │   │       │
+  │   │       ├── types/
+  │   │       │
+  │   │       ├── utils/
+  │   │       │
+  │   │       ├── App.tsx
+  │   │       └── main.tsx
+  │   │
+  │   │
+  │   └── backend/                              
+  │       │
+  │       ├── src/
+  │       │   │
+  │       │   ├── config/
+  │       │   │   └── env.ts
+  │       │   │
+  │       │   ├── MODULES/
+  │       │   │   └──ALL MODULES
+  │       │   │
+  │       │   ├── routes/
+  │       │   │   └── ALL ROUTES
+  │       │   │
+  │       │   ├── middlewares/
+  │       │   │   └── ALL MIDDLEWARES
+  │       │   │
+  │       │   ├── lib/
+  │       │   │   └── prisma
+  │       │   │
+  │       │   ├── ai/
+  │       │   │   │
+  │       │   │   ├── models/
+  │       │   │   │   ├── llm.factory.ts
+  │       │   │   │   └── model.config.ts
+  │       │   │   │
+  │       │   │   ├── prompts/
+  │       │   │   │   ├── quality.prompt.ts
+  │       │   │   │   ├── safety.prompt.ts
+  │       │   │   │   └── trust.prompt.ts
+  │       │   │   │
+  │       │   │   ├── schemas/
+  │       │   │   │   ├── judge.schema.ts
+  │       │   │   │   └── evaluation.schema.ts
+  │       │   │   │
+  │       │   │   ├── judges/
+  │       │   │   │   ├── quality.judge.ts
+  │       │   │   │   ├── safety.judge.ts
+  │       │   │   │   └── trust.judge.ts
+  │       │   │   │
+  │       │   │   ├── graph/
+  │       │   │   │   ├── state.ts
+  │       │   │   │   ├── nodes/
+  │       │   │   │   │   ├── validate-input.node.ts
+  │       │   │   │   │   ├── prepare-context.node.ts
+  │       │   │   │   │   ├── quality.node.ts
+  │       │   │   │   │   ├── safety.node.ts
+  │       │   │   │   │   ├── trust.node.ts
+  │       │   │   │   │   ├── consensus.node.ts
+  │       │   │   │   │   ├── risk.node.ts
+  │       │   │   │   │   ├── human-review.node.ts
+  │       │   │   │   │   └── finalize.node.ts
+  │       │   │   │   │
+  │       │   │   │   ├── edges/
+  │       │   │   │   │   └── routing.ts
+  │       │   │   │   │
+  │       │   │   │   └── evaluation.graph.ts
+  │       │   │   │
+  │       │   │   ├── consensus/
+  │       │   │   │   ├── consensus.engine.ts
+  │       │   │   │   └── confidence.calculator.ts
+  │       │   │   │
+  │       │   │   ├── hallucination/
+  │       │   │   │   ├── claim-extractor.ts
+  │       │   │   │   ├── claim-verifier.ts
+  │       │   │   │   └── hallucination-detector.ts
+  │       │   │   │
+  │       │   │   └── risk/
+  │       │   │       └── risk.engine.ts
+  │       │   │
+  │       │   ├── types/
+  │       │   │   ├── evaluation.types.ts
+  │       │   │   ├── judge.types.ts
+  │       │   │   └── risk.types.ts
+  │       │   │
+  │       │   ├── utils/
+  │       │   │   └── ALL UTILS
+  │       │   │
+  │       │   ├── app.ts
+  │       │   └── index.ts
+  │       │
+  │       ├── prisma/
+  │       │   ├── schema.prisma
+  │       │   └── migrations/
+  │       │
+  │       ├── tests/
+  │       │   ├── unit/
+  │       │   ├── integration/
+  │       │   └── evaluation/
+  │       │
+  │       ├── package.json
+  │       └── tsconfig.json
+  │
+  ├── packages/
+  │   ├── shared/
+  │   │   ├── types/
+  │   │   └── schemas/
+  │   │
+  │   └── config/
+  │
+  ├── docs/
+  │   ├── architecture/
+  │   │   └── architecture-diagram.png
+  │   │
+  │   ├── evaluation-methodology.md
+  │   ├── system-design.md
+  │   └── api.md
+  │
+  ├── scripts/
+  │   ├── seed.ts
+  │   └── evaluate-dataset.ts
+  │    ── .env.example
+  │
+  ├
+  ├── .gitignore
+  ├── README.md
+  
   ```
   
   ## Multi-Judge Architecture
