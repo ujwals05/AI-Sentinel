@@ -2,6 +2,10 @@
 
 **Sentinel** integrates with **AI-powered applications** to continuously **monitor** and evaluate their outputs using a multi-judge LLM architecture. It assesses quality, correctness, safety, groundedness, and policy compliance, explains failures with evidence, assigns risk levels. Developers can use a **playground** for manual evaluation, an **API** for production integration, and an observability dashboard to monitor AI quality and detect regressions over time.
 
+[DOCUMENT](https://www.notion.so/AI-Sentinel-3b2d5e5e00cb8020b32cee682d42282d?source=copy_link)
+
+[LIVE](https://sentinel-eight-tau.vercel.app/)
+
 LIVE
 
 # Problem
@@ -44,38 +48,152 @@ Monitoring AI powered application
   ## Folder Structure
 
   ```
-  flux-v1/
-  │
-  ├── backend/
-  │   ├── src/
-  │   │   ├── controllers/
-  │   │   ├── db/
-  │   │   ├── models/
-  │   │   ├── routers/
-  │   │   ├── middleware/
-  │   │   ├── utils/
-  │   │   └── index.js    -Entry point for backend
-  │   ├── public/
-  │   ├── vercel.json
-  │   ├── package.json
-  │   ├── package-lock.json
-  │   └── README.md
-  ├── frontend/
-  │   ├── src/
-  │   │   ├── components/
-  │   │   ├── constan
-  │   │   ├── assets/
-  │   │   ├── pages/
-  │   │   ├── store/
-  │   │   ├── utils/
-  │   │   ├── App.jsx     -Entry point for frontend
-  │   │   └── index.css
-  │   ├── public/
-  │   ├── index.html
-  │   ├── package.json
-  │   ├── package-lock.json
-  │   ├──.gitignore
-  └── README.md
+  sisa-ai-judge/
+│
+├── apps/
+│   │
+│   ├── web/                              # React Frontend
+│   │   ├── public/
+│   │   │
+│   │   └── src/
+│   │       ├── assets/
+│   │       │
+│   │       ├── components/
+│   │       │   └── ALL COMPONENTS
+│   │       │
+│   │       ├── pages/
+│   │       │   └── ALL PAGES
+│   │       │
+│   │       ├── hooks/
+│   │       │
+│   │       ├── services/
+│   │       │   └── api.ts
+│   │       │
+│   │       ├── stores/
+│   │       │
+│   │       ├── types/
+│   │       │
+│   │       ├── utils/
+│   │       │
+│   │       ├── App.tsx
+│   │       └── main.tsx
+│   │
+│   │
+│   └── api/                              # Node.js Backend
+│       │
+│       ├── src/
+│       │   │
+│       │   ├── config/
+│       │   │   └── env.ts
+│       │   │
+│       │   ├── MODULES/
+│       │   │   └──ALL MODULES
+│       │   │
+│       │   ├── routes/
+│       │   │   └── ALL ROUTES
+│       │   │
+│       │   ├── middlewares/
+│       │   │   └── ALL MIDDLEWARES
+│       │   │
+│       │   ├── lib/
+│       │   │   └── prisma
+│       │   │
+│       │   ├── ai/
+│       │   │   │
+│       │   │   ├── models/
+│       │   │   │   ├── llm.factory.ts
+│       │   │   │   └── model.config.ts
+│       │   │   │
+│       │   │   ├── prompts/
+│       │   │   │   ├── quality.prompt.ts
+│       │   │   │   ├── safety.prompt.ts
+│       │   │   │   └── trust.prompt.ts
+│       │   │   │
+│       │   │   ├── schemas/
+│       │   │   │   ├── judge.schema.ts
+│       │   │   │   └── evaluation.schema.ts
+│       │   │   │
+│       │   │   ├── judges/
+│       │   │   │   ├── quality.judge.ts
+│       │   │   │   ├── safety.judge.ts
+│       │   │   │   └── trust.judge.ts
+│       │   │   │
+│       │   │   ├── graph/
+│       │   │   │   ├── state.ts
+│       │   │   │   ├── nodes/
+│       │   │   │   │   ├── validate-input.node.ts
+│       │   │   │   │   ├── prepare-context.node.ts
+│       │   │   │   │   ├── quality.node.ts
+│       │   │   │   │   ├── safety.node.ts
+│       │   │   │   │   ├── trust.node.ts
+│       │   │   │   │   ├── consensus.node.ts
+│       │   │   │   │   ├── risk.node.ts
+│       │   │   │   │   ├── human-review.node.ts
+│       │   │   │   │   └── finalize.node.ts
+│       │   │   │   │
+│       │   │   │   ├── edges/
+│       │   │   │   │   └── routing.ts
+│       │   │   │   │
+│       │   │   │   └── evaluation.graph.ts
+│       │   │   │
+│       │   │   ├── consensus/
+│       │   │   │   ├── consensus.engine.ts
+│       │   │   │   └── confidence.calculator.ts
+│       │   │   │
+│       │   │   ├── hallucination/
+│       │   │   │   ├── claim-extractor.ts
+│       │   │   │   ├── claim-verifier.ts
+│       │   │   │   └── hallucination-detector.ts
+│       │   │   │
+│       │   │   └── risk/
+│       │   │       └── risk.engine.ts
+│       │   │
+│       │   ├── types/
+│       │   │   ├── evaluation.types.ts
+│       │   │   ├── judge.types.ts
+│       │   │   └── risk.types.ts
+│       │   │
+│       │   ├── utils/
+│       │   │   └── ALL UTILS
+│       │   │
+│       │   ├── app.ts
+│       │   └── index.ts
+│       │
+│       ├── prisma/
+│       │   ├── schema.prisma
+│       │   └── migrations/
+│       │
+│       ├── tests/
+│       │   ├── unit/
+│       │   ├── integration/
+│       │   └── evaluation/
+│       │
+│       ├── package.json
+│       └── tsconfig.json
+│
+├── packages/
+│   ├── shared/
+│   │   ├── types/
+│   │   └── schemas/
+│   │
+│   └── config/
+│
+├── docs/
+│   ├── architecture/
+│   │   └── architecture-diagram.png
+│   │
+│   ├── evaluation-methodology.md
+│   ├── system-design.md
+│   └── api.md
+│
+├── scripts/
+│   ├── seed.ts
+│   └── evaluate-dataset.ts
+│    ── .env.example
+│
+├
+├── .gitignore
+├── README.md
   ```
   
   ## Multi-Judge Architecture
