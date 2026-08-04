@@ -25,7 +25,6 @@ export const authKeys = {
 export const useCurrentUser = () => {
   const setUser = useAuthStore((s) => s.setUser);
   const clearUser = useAuthStore((s) => s.clearUser);
-  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
 
   const query = useQuery({
     queryKey: authKeys.me,
@@ -34,7 +33,7 @@ export const useCurrentUser = () => {
       setUser(res.data.user);
       return res.data.user;
     },
-    enabled: isAuthenticated,
+    enabled: true, // Always verify session with backend on mount
     retry: false,
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
