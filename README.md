@@ -245,15 +245,27 @@ Monitoring AI powered application
   This provides a single high-level view of the AI response while preserving the individual judge results for deeper analysis.
   
   
-
-  ## Installation & Setup -Locally
-
-  ### Clone the repository
-
+  ## Installation & Setup - Locally
+  
+  ### Prerequisites
+  
+  Before running Sentinel locally, make sure you have the following installed:
+  
+  - Node.js 20+
+  - npm
+  - PostgreSQL database
+  - Git
+  - Google Gemini API Key
+  
+  ---
+  
+  ### Clone the Repository
+  
   ```bash
   git clone https://github.com/ujwals05/AI-Sentinel.git
   cd AI-Sentinel
   ```
+
 
   ### Set-up Backend
 
@@ -265,9 +277,11 @@ Monitoring AI powered application
   ### Create a .env file in the backend directory:
 
   ```
-  PORT = 8001
+  PORT = 5000
   POSTGRES = preisma 
   CORS_ORIGIN = http://localhost:5173
+
+  
 
   ACCESS_TOKEN_SECRET = your_access_token
   ACCESS_TOKEN_EXPIRY = 1d
@@ -275,13 +289,30 @@ Monitoring AI powered application
   REFRESH_TOKEN_SECRET = your_refresh_token
   REFRESH_TOKEN_EXPIRY = 10d
 
+  # Google Gemini
+  GOOGLE_API_KEY="your_google_gemini_api_key"
+
   NODE_ENV = development
   ```
 
-  ### Start backend
+  ### Set up database
 
+  1. Generate the Prisma Client:
+  ```
+  npm run prisma:generate
+  ```
+  2. Apply the Prisma migrations to your PostgreSQL database:
+  ```
+  npx prisma migrate dev
+  ```
+  ### Run backend 
   ```
   npm run dev
+  ```
+
+  Backend will be running at 
+  ```
+  http://localhost:5000
   ```
 
   ### Set-up Front-end
@@ -289,7 +320,49 @@ Monitoring AI powered application
   ```
   cd frontend
   npm install
+  ```
+
+  # Configure Frontend Environment Variables
+
+  Create a **.env** file inside the **frontend** directory:
+  ```
+  VITE_API_URL="http://localhost:5000"
+  ```
+
+  ### Start frontend 
+  ```
   npm run dev
   ```
+
+  Frontend will be running at 
+  ```
+  http://localhost:5173
+  ```
+
+  # Architecture 
+
+  ```
+  ┌──────────────────────────┐
+  │       React Frontend     │
+  │    http://localhost:5173 │
+  └────────────┬─────────────┘
+               │
+               │ REST API
+               ▼
+  ┌──────────────────────────┐
+  │   Node.js + Express API  │
+  │    http://localhost:5000 │
+  └────────────┬─────────────┘
+             │
+       ┌─────┴──────┐
+       │            │
+       ▼            ▼
+┌────────────┐  ┌──────────────┐
+│ PostgreSQL │  │ Gemini LLM   │
+│  + Prisma  │  │ + LangGraph  │
+└────────────┘  └──────────────┘
+ 
+
+
 
 https://github.com/ujwals05/AI-Sentinel.git
