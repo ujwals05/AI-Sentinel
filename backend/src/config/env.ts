@@ -28,6 +28,9 @@ const envSchema = z.object({
     .min(1, "CORS_ORIGIN is required"),
 
   GEMINI_API_KEY: z.string().min(1, "GEMINI_API_KEY is required"),
+  GEMINI_API_KEY_SAFETY: z.string().min(1, "GEMINI_API_KEY is required"),
+  GEMINI_API_KEY_QUALITY: z.string().min(1, "GEMINI_API_KEY is required"),
+  GEMINI_API_KEY_TRUST: z.string().min(1, "GEMINI_API_KEY is required"),
   GEMINI_MODEL: z.string().default("gemini-2.5-flash"),
   GEMINI_TEMPERATURE: z.coerce.number().default(0.2),
 });

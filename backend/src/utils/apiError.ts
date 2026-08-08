@@ -13,4 +13,4 @@ export class ApiError extends Error {
             ApiError.prototype
         );
     }
-}
+} 

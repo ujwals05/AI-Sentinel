@@ -101,9 +101,7 @@ interface StartEvaluationInput {
 }
 
 
-export const startEvaluation = async (
-    input: StartEvaluationInput
-) => {
+export const startEvaluation = async (input: StartEvaluationInput) => {
 
     let evaluationId: string | undefined;
 

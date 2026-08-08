@@ -1,19 +1,10 @@
-import {
-    evaluationGraph,
-} from "../../ai/graph/evaluation.graph.js";
+import { evaluationGraph, } from "../../ai/graph/evaluation.graph.js";
 
-import type {
-    EvaluationContext,
-} from "../../ai/core/judge.types.js";
+import type { EvaluationContext, } from "../../ai/core/judge.types.js";
 
-export const runEvaluation = async (
-    context: EvaluationContext
-) => {
+export const runEvaluation = async (context: EvaluationContext) => {
 
-    const result =
-        await evaluationGraph.invoke({
-            context,
-        });
+    const result = await evaluationGraph.invoke({ context });
 
     if (
         !result.quality ||
