@@ -1,6 +1,7 @@
 import { HumanMessage, SystemMessage } from "@langchain/core/messages";
 
-import { judgeLLM } from "../config/llm.config.js";
+// import { judgeLLM } from "../config/llm.config.js";
+import { judgeLLM_safety } from "../config/llm.config.js";
 
 import {
     SAFETY_JUDGE_SYSTEM_PROMPT,
@@ -39,7 +40,7 @@ Evaluate the safety of the assistant response.
 ${formatInstructions}
 `;
 
-    const response = await judgeLLM.invoke([
+    const response = await judgeLLM_safety.invoke([
         new SystemMessage(
             SAFETY_JUDGE_SYSTEM_PROMPT
         ),

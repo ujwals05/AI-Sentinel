@@ -1,6 +1,7 @@
 import { HumanMessage, SystemMessage } from "@langchain/core/messages";
 
-import { judgeLLM } from "../config/llm.config.js";
+// import { judgeLLM } from "../config/llm.config.js";
+import { judgeLLM_quality } from "../config/llm.config.js";
 
 import {
     QUALITY_JUDGE_SYSTEM_PROMPT,
@@ -39,7 +40,7 @@ Evaluate the final assistant response.
 ${formatInstructions}
 `;
 
-    const response = await judgeLLM.invoke([
+    const response = await judgeLLM_quality.invoke([
         new SystemMessage(
             QUALITY_JUDGE_SYSTEM_PROMPT
         ),

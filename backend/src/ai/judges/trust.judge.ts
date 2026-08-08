@@ -1,6 +1,7 @@
 import { HumanMessage, SystemMessage } from "@langchain/core/messages";
 
-import { judgeLLM } from "../config/llm.config.js";
+// import { judgeLLM } from "../config/llm.config.js";
+import { judgeLLM_trust } from "../config/llm.config.js";
 
 import {
     TRUST_JUDGE_SYSTEM_PROMPT,
@@ -40,7 +41,7 @@ of the assistant response.
 ${formatInstructions}
 `;
 
-    const response = await judgeLLM.invoke([
+    const response = await judgeLLM_trust.invoke([
         new SystemMessage(
             TRUST_JUDGE_SYSTEM_PROMPT
         ),
